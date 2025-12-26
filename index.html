@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auction Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>Bid-it!</h1>
+
+      <!-- Categories Dropdown -->
+      <div class="categories">
+        <label for="category">Category:</label>
+        <select id="category" onchange="filterProducts()">
+          <option value="all">All Categories</option>
+          <option value="clothing">Clothing</option>
+          <option value="painting">Painting</option>
+          <option value="watch">Watch</option>
+          <option value="smartphone">Smartphone</option>
+          <option value="Vase">Vase</option>
+          <option value=" Baseball"> Baseball</option>
+      
+      
+        </select>
+      </div>
+
+      <!-- Search Input -->
+      <div class="search">
+        <input type="text" id="search-input" placeholder="Search auctions..." onkeyup="search()">
+      </div>
+    </div>
+    <nav>
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+      <a href="add.html">Add</a>
+      <a href="address2.html">Address</a>
+  </nav>
+  </header>
+  <section class="auction-items">
+    <h2>Featured Auction Items</h2>
+    <div class="product-grid" id="product-grid">
+      <!-- Sample Product 1 -->
+      <div class="auction-item" id="item1" data-category="clothing">
+        <img src="t shirt.avif" alt="Product 1">
+        <h3>Vintage T-shirt</h3>
+        <p>A classic vintage t-shirt in great condition.</p>
+        <p>Current Bid: Rs<span id="bid1">2000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput1" placeholder="Enter your bid">
+          <button onclick="placeBid(1, 2000)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders1"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(1)">Reduce Timer</button>
+        </div>
+      </div>
+      
+      <!-- Sample Product 2 -->
+      <div class="auction-item" id="item2" data-category="painting">
+        <img src="17-nature-scenery-oil-painting-trees-arteet.jpg" alt="Product 2">
+        <h3>Oil Painting</h3>
+        <p>A beautiful oil painting of a couple.</p>
+        <p>Current Bid: Rs<span id="bid2">200000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput2" placeholder="Enter your bid">
+          <button onclick="placeBid(2)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders2"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(2)">Reduce Timer</button>
+        </div>
+      </div>
+      
+      <!-- Sample Product 3 -->
+      <div class="auction-item" id="item3" data-category="watch">
+        <img src="watch (1).avif" alt="Product 3">
+        <h3>Antique Watch</h3>
+        <p>Rare vintage wristwatch from the 1980s.</p>
+        <p>Current Bid: Rs<span id="bid3">600000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput3" placeholder="Enter your bid">
+          <button onclick="placeBid(3, 600000)">Place Bid</button> 
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders3"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(3)">Reduce Timer</button>
+        </div>
+      </div>
+      <!-- Sample Product 4 -->
+      <div class="auction-item" id="item4" data-category="smartphone">
+        <img src="smartphone (1).jpg" alt="Product 4">
+        <h3>Smartphone</h3>
+        <p>A very unique smartphone.</p>
+        <p>Current Bid: Rs<span id="bid4">200000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput4" placeholder="Enter your bid">
+          <button onclick="placeBid(4, 200000)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders4"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(4)">Reduce Timer</button>
+        </div>
+      </div>
+      <!-- Sample Product 5 -->
+      <div class="auction-item" id="item5" data-category="Watch">
+        <img src="https://www.txantiquemall.com/wp-content/uploads/2022/04/Patek-Philippe-1518-in-Stainless-Steel.jpg" alt="Product 5">
+        <h3>Vintage Watch</h3>
+        <p>Patek Philippe 1518 in Stainless Steel 1943</p>
+        <p>Current Bid: Rs<span id="bid5">3000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput5" placeholder="Enter your bid">
+          <button onclick="placeBid(5, 3000)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders5"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(5)">Reduce Timer</button>
+        </div>
+      </div>
+            <!-- Sample Product 6-->
+      <div class="auction-item" id="item6" data-category="Vase">
+        <img src="https://www.jacquelinestallone.com/wp-content/uploads/2022/08/German-Dresden-Vases-450-8500.jpg" alt="Product 6">
+        <h3>Antique Vase</h3>
+        <p>German Dresden Vases</p>
+        <p>Current Bid: Rs<span id="bid6">39000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput6" placeholder="Enter your bid">
+          <button onclick="placeBid(6, 39000)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders6"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(6)">Reduce Timer</button>
+        </div>
+      </div>
+      <!-- Sample Product 7-->
+      <div class="auction-item" id="item7" data-category="Baseball">
+        <img src="https://dyn1.heritagestatic.com/lf?set=path[7%2F0%2F6%2F5%2F7065137]&call=url[file:product.chain]" alt="Product 7">
+        <h3>Signed Baseball</h3>
+        <p>1948 Jackie Robinson Single Signed Baseball</p>
+        <p>Current Bid: Rs<span id="bid7">30000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput7" placeholder="Enter your bid">
+          <button onclick="placeBid(7, 30000)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders7"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(7)">Reduce Timer</button>
+        </div>
+      </div>
+       <!-- Sample Product 8-->
+       <div class="auction-item" id="item8" data-category="Baseball">
+        <img src="https://sp.yimg.com/ib/th?id=OIP.CoN1sH4pgMok6RkaWCLiQAHaFj&pid=Api&w=148&h=148&c=7&dpr=2&rs=1" alt="Product 8">
+        <h3>Rolls-Royce Silver Shadow</h3>
+        <p>1974 Rolls-Royce Silver Shadow for Sale</p>
+        <p>Current Bid: Rs<span id="bid8">250000000</span></p>
+        <div class="bid-container">
+          <input type="number" id="bidInput8" placeholder="Enter your bid">
+          <button onclick="placeBid(8, 250000000)">Place Bid</button>
+        </div>
+        <div class="timer">Time left: <span class="time"></span></div>
+        <h4>Bidders:</h4>
+        <ul id="bidders8"></ul>
+        <div class="timer-adjustment">
+          <button onclick="adjustTimer(9)">Reduce Timer</button>
+        </div>
+      </div>
+      
+      
+    </div>
+  </section>
+  <footer>
+    <p>&copy; 2024 Auction House. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
